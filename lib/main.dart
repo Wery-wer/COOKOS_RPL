@@ -1,3 +1,4 @@
+import 'package:flutter_dev/screen/splash.dart';
 import 'package:flutter_dev/screen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,15 +14,20 @@ class MyApp extends StatelessWidget {
    // This widget is the root of your application.
    @override
    Widget build(BuildContext context) {
-     return GetMaterialApp(   // get material app
+     return MaterialApp(   // get material app
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'COOKOS',
         theme: ThemeData(fontFamily: 'Poppins'),
-        initialRoute: LoginPage.routeName,
-        getPages: [
-          GetPage(name: LoginPage.routeName, page: () => const LoginPage()),
-          GetPage(name: Registrasi.routeName, page: () => const Registrasi()),
-        ],
+        // initialRoute: LoginPage.routeName,
+        routes:   {
+          '/': (context) => const SplashScreenPage(),
+          '/login': (context) => const LoginPage(),
+          '/registrasi': (context) => const Registrasi(),
+        }
+        // getPages: [
+        //   GetPage(name: LoginPage.routeName, page: () => const LoginPage()),
+        //   GetPage(name: Registrasi.routeName, page: () => const Registrasi()),
+        // ],
      ); 
    } 
  }

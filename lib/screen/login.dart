@@ -142,11 +142,16 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           // Tambahkan teks di bawah layar
-          Text(
-            "Belum memiliki akun ? Registrasi",
-            style: TextStyle(
-              color: Colors.black, // Ubah warna teks
-              fontSize: 16, // Sesuaikan ukuran teks
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, '/registrasi');
+            },
+            child: Text(
+              "Belum memiliki akun ? Registrasi",
+              style: TextStyle(
+                color: Colors.black, // Ubah warna teks
+                fontSize: 16, // Sesuaikan ukuran teks
+              ),
             ),
           ),
         ],

@@ -18,6 +18,7 @@ class _RegistrasiPageState extends State<Registrasi> {
     String username = usernameController.text;
     String email = emailController.text;
     String password = passwordController.text;
+    Navigator.pushNamed(context, "/");
 
     // Add your login logic here
     // You can check the entered username and password against your database or any other authentication method.
@@ -179,7 +180,7 @@ class _RegistrasiPageState extends State<Registrasi> {
           ),
           // Tambahkan teks di bawah layar
           Text(
-            "Belum memiliki akun ? Registrasi",
+            "Sudah memiliki akun? Login",
             style: TextStyle(
               color: Colors.black, // Ubah warna teks
               fontSize: 16, // Sesuaikan ukuran teks
