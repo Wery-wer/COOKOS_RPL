@@ -18,7 +18,7 @@ class _RegistrasiPageState extends State<Registrasi> {
     String username = usernameController.text;
     String email = emailController.text;
     String password = passwordController.text;
-    Navigator.pushNamed(context, "/");
+    Navigator.pushNamed(context, "/login");
 
     // Add your login logic here
     // You can check the entered username and password against your database or any other authentication method.
@@ -54,7 +54,7 @@ class _RegistrasiPageState extends State<Registrasi> {
               Text(
                 "KOS",
                 style: TextStyle(
-                  color: Colors.pink,
+                  color: Color(0xFFE5737D),
                   fontSize: 64,
                   fontWeight: FontWeight.w700,
                 ),
@@ -78,7 +78,7 @@ class _RegistrasiPageState extends State<Registrasi> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 10),
+                      margin: EdgeInsets.only(left: 29),
                       child: Text(
                         "Buat Akun",
                         style: TextStyle(
@@ -86,74 +86,9 @@ class _RegistrasiPageState extends State<Registrasi> {
                         textAlign: TextAlign.start,
                       ),
                     ),
-                    Container(
-                      child: Text(
-                        "Username",
-                        style: TextStyle(
-                          color: Colors.black, // Ubah warna teks
-                          height: 3,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 35,
-                      child: TextFormField(
-                        controller: usernameController,
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: UnderlineInputBorder(),
-                            labelText: '  Masukkan Username'),
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Email Address",
-                        style: TextStyle(
-                          color: Colors.black, // Ubah warna teks
-                          height: 3,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 35,
-                      child: TextFormField(
-                        controller: emailController,
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: UnderlineInputBorder(),
-                            labelText: '  Masukkan Email'),
-                        obscureText: true,
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "Password",
-                        style: TextStyle(
-                          color: Colors.black, // Ubah warna teks
-                          height: 3,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 35,
-                      child: TextFormField(
-                        controller: passwordController,
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: UnderlineInputBorder(),
-                            labelText: '  Masukkan Password'),
-                        obscureText: true,
-                      ),
-                    ),
+                    customTextField(controller: usernameController, title: "Username", hintText: "Masukkan username",),
+                    customTextField(controller: emailController, title: "Email Address", hintText: "Masukkan email address",),
+                    customTextField(controller: passwordController, title: "Password", hintText: "Masukkan password",),
                     SizedBox(height: 20),
                     Container(
                       alignment: Alignment.center,
@@ -186,6 +121,59 @@ class _RegistrasiPageState extends State<Registrasi> {
               fontSize: 16, // Sesuaikan ukuran teks
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class customTextField extends StatelessWidget {
+  final String title;
+  final String hintText;
+  final TextEditingController controller;
+  const customTextField({
+    super.key,
+    required this.controller, required this.title, required this.hintText,
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 29),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+          title,
+          style: TextStyle(
+            color: Colors.black, // Ubah warna teks
+            height: 3,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+      Container(
+        height: 35,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: TextFormField(
+          textAlignVertical: TextAlignVertical.bottom,
+          controller: controller,
+          decoration: InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(
+                  color: Color(0xffA9A9A9),
+                )
+              ),
+              hintText: hintText ),
+          obscureText: true,
+        ),
+      ),
         ],
       ),
     );

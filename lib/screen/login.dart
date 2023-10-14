@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 "KOS",
                 style: TextStyle(
-                  color: Colors.pink,
+                  color: Color(0xFFE5737D),
                   fontSize: 64,
                   fontWeight: FontWeight.w700,
                 ),
