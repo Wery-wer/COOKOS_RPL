@@ -19,8 +19,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(fontFamily: 'Poppins'),
         initialRoute: LoginPage.routeName,
         getPages: [
-          GetPage(name: LoginPage.routeName, page: () => const LoginPage()),
-          GetPage(name: Registrasi.routeName, page: () => const Registrasi()),
+          GetPage(name: LoginPage.routeName, page: () => const LoginPage())
         ],
      ); 
    } 
