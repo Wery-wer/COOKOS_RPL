@@ -1,3 +1,4 @@
+import 'package:flutter_dev/screen/edit_profile.dart';
 import 'package:flutter_dev/screen/splash.dart';
 import 'package:flutter_dev/screen/login.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const SplashScreenPage(),
           '/login': (context) => const LoginPage(),
           '/registrasi': (context) => const Registrasi(),
+          '/edit_profile': (context) => const EditProfile(),
         }
         // getPages: [
         //   GetPage(name: LoginPage.routeName, page: () => const LoginPage()),

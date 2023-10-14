@@ -16,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   void _login() {
     String username = usernameController.text;
     String password = passwordController.text;
+    Navigator.pushNamed(context, "/edit_profile");
 
     // Add your login logic here
     // You can check the entered username and password against your database or any other authentication method.
