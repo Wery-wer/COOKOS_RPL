@@ -82,6 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.black, // Ubah warna teks
                           height: 6,
                           fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
