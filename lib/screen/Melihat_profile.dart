@@ -15,10 +15,12 @@ class _seeProfile extends State<seeProfile> {
 
   void _edit() {
     String edit = editController.text;
+    Navigator.pushNamed(context, "/edit_profile");
   }
 
   void _bookmark() {
     String bookmark = bookmarkController.text;
+    Navigator.pushNamed(context, "/bookmark");
   }
 
   @override
@@ -27,7 +29,9 @@ class _seeProfile extends State<seeProfile> {
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.popAndPushNamed(context, "/Melihat_profile");
+            },
           ),
           backgroundColor: Color(0xffe5737d),
           centerTitle: true,

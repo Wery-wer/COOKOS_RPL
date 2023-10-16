@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Registrasi extends StatefulWidget {
-  static String routeName = '/registrasi';
   const Registrasi({Key? key}) : super(key: key);
 
   @override
@@ -86,9 +85,9 @@ class _RegistrasiPageState extends State<Registrasi> {
                         textAlign: TextAlign.start,
                       ),
                     ),
-                    customTextField(controller: usernameController, title: "Username", hintText: "Masukkan username",),
-                    customTextField(controller: emailController, title: "Email Address", hintText: "Masukkan email address",),
-                    customTextField(controller: passwordController, title: "Password", hintText: "Masukkan password",),
+                    customTextField(controller: usernameController, title: "Username", hintText: "Masukkan username", isPassword: false,),
+                    customTextField(controller: emailController, title: "Email Address", hintText: "Masukkan email address", isPassword: false,),
+                    customTextField(controller: passwordController, title: "Password", hintText: "Masukkan password", isPassword: true,),
                     SizedBox(height: 20),
                     Container(
                       alignment: Alignment.center,
@@ -130,10 +129,11 @@ class _RegistrasiPageState extends State<Registrasi> {
 class customTextField extends StatelessWidget {
   final String title;
   final String hintText;
+  final bool isPassword;
   final TextEditingController controller;
   const customTextField({
     super.key,
-    required this.controller, required this.title, required this.hintText,
+    required this.controller, required this.title, required this.hintText, required this.isPassword,
   });
 
 
@@ -171,7 +171,7 @@ class customTextField extends StatelessWidget {
                 )
               ),
               hintText: hintText ),
-          obscureText: true,
+          obscureText: isPassword,
         ),
       ),
         ],

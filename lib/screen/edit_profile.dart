@@ -21,7 +21,7 @@ class EditProfile extends StatefulWidget {
     String usia = usiaController.text;
     String jeniskelamin = jeniskelaminController.text;
     String tanggallahir = tanggallahirController.text;
-    Navigator.pushNamed(context, "/edit_profile");
+    Navigator.pushNamed(context, "/Melihat_profile");
   }
 
 
@@ -124,6 +124,7 @@ class customTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child: TextFormField(
+          textAlignVertical: TextAlignVertical.bottom,
           controller: controller,
           decoration: InputDecoration(
               fillColor: Colors.white,

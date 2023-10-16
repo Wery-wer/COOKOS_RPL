@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dev/screen/registrasi.dart';
 
 class LoginPage extends StatefulWidget {
   static String routeName = '/login';
@@ -10,18 +11,18 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   void _login() {
-    String username = usernameController.text;
+    String email = emailController.text;
     String password = passwordController.text;
-    Navigator.pushNamed(context, "/edit_profile");
+    Navigator.pushNamed(context, "/rating_review");
 
     // Add your login logic here
     // You can check the entered username and password against your database or any other authentication method.
     // Example:
-    if (username == 'your_username' && password == 'your_password') {
+    if (email == 'your_email' && password == 'your_password') {
       // Successful login
       // Navigate to the next screen or perform some action
     } else {
@@ -76,50 +77,11 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      child: Text(
-                        "Username",
-                        style: TextStyle(
-                          color: Colors.black, // Ubah warna teks
-                          height: 6,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child: customTextField(controller: emailController, title: "Email Address",hintText: "Masukkan Email Address", isPassword: false),
                     ),
+
                     Container(
-                      child: TextFormField(
-                        controller: usernameController,
-                        decoration: InputDecoration(
-                          labelText: 'Masukan Username',
-                          labelStyle: TextStyle(color: Colors.black), // Ubah warna teks label
-                          fillColor: Colors.white, // Ubah warna latar belakang
-                          filled: true,
-                          contentPadding: EdgeInsets.symmetric(vertical: 3, horizontal: 6), // Mengatur ukuran "box"
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 2),
-                    Container(
-                      child: Text(
-                        "Password",
-                        style: TextStyle(
-                          color: Colors.black, // Ubah warna teks
-                          height: 3,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: TextFormField(
-                        controller: passwordController,
-                        decoration: InputDecoration(
-                          labelText: 'Masukkan Password',
-                          labelStyle: TextStyle(color: Colors.black), // Ubah warna teks label
-                          fillColor: Colors.white, // Ubah warna latar belakang
-                          filled: true,
-                        ),
-                        obscureText: true,
-                      ),
+                      child : customTextField(controller: passwordController, title: "Password", hintText: "Masukkan Password", isPassword: true,),
                     ),
                     SizedBox(height: 20),
                     Container(
