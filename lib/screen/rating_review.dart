@@ -94,7 +94,8 @@ class _RatingPageState extends State<RatingPage> {
                               ),
                           onRatingUpdate: (rating) {
                             ; // controller kirim (mengirim hasil rating ke database)
-                          })),
+                          })
+                  ),
                 ],
               ),
             ),
@@ -394,7 +395,6 @@ class _RatingPageState extends State<RatingPage> {
               width: double.infinity,
               //==========================BERISI REVIEW DARI DATABASE======================
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                       margin: EdgeInsets.all(20),

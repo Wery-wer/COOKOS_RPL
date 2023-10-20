@@ -20,7 +20,7 @@ class _seeProfile extends State<seeProfile> {
 
   void _bookmark() {
     String bookmark = bookmarkController.text;
-    Navigator.pushNamed(context, "/bookmark");
+    Navigator.pushNamed(context, "/rating_review");
   }
 
   @override

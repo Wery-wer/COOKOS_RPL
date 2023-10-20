@@ -1,4 +1,5 @@
 import 'package:flutter_dev/screen/edit_profile.dart';
+import 'package:flutter_dev/screen/logout.dart';
 import 'package:flutter_dev/screen/splash.dart';
 import 'package:flutter_dev/screen/login.dart';
 import 'package:flutter_dev/screen/Melihat_profile.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         title: 'COOKOS',
         theme: ThemeData(fontFamily: 'Poppins'),
         // initialRoute: LoginPage.routeName,
-        home : RatingPage(),
+        home : logout(),
         // routes:   {
         //   '/': (context) => const SplashScreenPage(),
         //   '/login': (context) => const LoginPage(),
@@ -41,3 +42,11 @@ class MyApp extends StatelessWidget {
      ); 
    } 
  }
+
+//  void main() {
+//   runApp(const MaterialApp(
+//     home: Center(
+//       child: Text('Hello, World!'), // Add your "Hello, World!" message here
+//     ),
+//   ));
+// }
