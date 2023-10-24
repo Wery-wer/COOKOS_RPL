@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_dev/widget/ShowRatingStars.dart';
+import 'package:flutter_dev/widget/RatingStars.dart';
 
 class RatingPage extends StatefulWidget {
   const RatingPage({super.key});
+
+  
 
   @override
   State<RatingPage> createState() => _RatingPageState();
@@ -12,16 +16,26 @@ class RatingPage extends StatefulWidget {
 class _RatingPageState extends State<RatingPage> {
   TextEditingController kirimController = TextEditingController();
   TextEditingController reviewController =
-      TextEditingController(text: 'Resepnya praktis banget!');
+  TextEditingController(text: 'Resepnya praktis banget!');
   TextEditingController enakController = TextEditingController();
   TextEditingController murahController = TextEditingController();
   TextEditingController praktisController = TextEditingController();
+  int ratingFromRatingStars = 0;
+
+  void handleRatingChange(int newRating) {
+    setState(() {
+      ratingFromRatingStars = newRating;
+    });
+    
+  }
 
   void _kirim() {
     String kirim = kirimController.text;
     String enak = enakController.text;
     String murah = murahController.text;
     String praktis = praktisController.text;
+    print(ratingFromRatingStars); // kirim ke database
+
   }
 
 
@@ -61,7 +75,7 @@ class _RatingPageState extends State<RatingPage> {
                   )),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   //===============Hasil Rating(input dtbs)===============
                   Container(
@@ -84,17 +98,8 @@ class _RatingPageState extends State<RatingPage> {
                   ),
                   //=========================RATING BINTANG DR DTBS==========================
                   Container(
-                      margin: EdgeInsets.only(left: 100),
-                      child: RatingBar.builder(
-                          direction: Axis.horizontal,
-                          itemSize: 30,
-                          itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                color: Color.fromARGB(255, 255, 191, 0),
-                              ),
-                          onRatingUpdate: (rating) {
-                            ; // controller kirim (mengirim hasil rating ke database)
-                          })
+                      margin: EdgeInsets.only(right: 20),
+                      child: ShowRatingStars(rating: 4.7),  //angka diubah dari database
                   ),
                 ],
               ),
@@ -131,7 +136,7 @@ class _RatingPageState extends State<RatingPage> {
                     decoration: BoxDecoration(
                         color: Color.fromRGBO(239, 110, 17, 83),
                         border: Border.all(
-                            color: Color.fromARGB(50, 0, 0, 0), width: 2.0),
+                            color: Color.fromARGB(49, 255, 255, 255), width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(25))),
                   ),
                   Container(
@@ -224,17 +229,9 @@ class _RatingPageState extends State<RatingPage> {
                               ),
                             )),
                         Container(
-                            margin: EdgeInsets.only(left: 30),
-                            child: RatingBar.builder(
-                                direction: Axis.horizontal,
-                                itemSize: 25,
-                                itemBuilder: (context, _) => Icon(
-                                      Icons.star,
-                                      color: Color.fromARGB(255, 255, 191, 0),
-                                    ),
-                                onRatingUpdate: (rating) {
-                                  _kirim(); // controller kirim (mengirim hasil rating ke database)
-                                })),
+                            child: RatingStars(onRatingChanged: handleRatingChange)
+                            
+                            ),
                       ],
                     ),
                     decoration: BoxDecoration(
@@ -268,7 +265,7 @@ class _RatingPageState extends State<RatingPage> {
                               width: 90,
                               margin: EdgeInsets.symmetric(horizontal: 5),
                               child: ElevatedButton(
-                                onPressed: _kirim,
+                                onPressed: (){enakController;},
                                 child: Container(
                                   child: Text('Enak'),
                                 ),

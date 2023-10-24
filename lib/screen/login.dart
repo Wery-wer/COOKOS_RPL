@@ -84,11 +84,23 @@ class _LoginPageState extends State<LoginPage> {
                       child : customTextField(controller: passwordController, title: "Password", hintText: "Masukkan Password", isPassword: true,),
                     ),
                     SizedBox(height: 20),
+                    //container button
                     Container(
                       alignment: Alignment.center,
                       child: ElevatedButton(
-                        onPressed: _login,
                         child: Text('Login'),
+                        onPressed: (){
+                          if (emailController.text == "" && passwordController.text == ""){
+                            ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Masukkan Email dan Password dengan benar"),
+                              behavior : SnackBarBehavior.floating,
+                            )
+                            );
+                          } else {
+                            _login();
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                           primary: const Color.fromARGB(255, 255, 255, 255), // Ubah warna latar belakang
                           onPrimary: const Color.fromARGB(255, 0, 0, 0), // Ubah warna teks

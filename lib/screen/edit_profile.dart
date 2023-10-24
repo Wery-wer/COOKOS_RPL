@@ -43,23 +43,30 @@ class EditProfile extends StatefulWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  height: 250,
-                  width: double.infinity,
-                  color: const Color(0xffe5737d),
-                  child: (Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 50),
-                        width: 150,
-                        height: 150,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  )),
+                Column(
+                  children: [
+                    Container(
+                      height: 250,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                      color: const Color(0xffe5737d),
+                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(14)),
+                      ),
+                      child: (Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 50),
+                            width: 150,
+                            height: 150,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      )),
+                    ),
+                  ],
                 ),
                 customTextField(controller: nameController, title: "Nama", hintText: "Masukkan nama",),
                 customTextField(controller: usiaController, title: "Usia", hintText: "Masukkan Usia",),
