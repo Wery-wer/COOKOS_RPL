@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dev/screen/registrasi.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+FirebaseAuth auth = FirebaseAuth.instance;
 
 class LoginPage extends StatefulWidget {
   static String routeName = '/login';
@@ -14,10 +17,21 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  void _login() {
+  void _login() async {
     String email = emailController.text;
     String password = passwordController.text;
-    Navigator.pushNamed(context, "/edit_profile");
+
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text);
+      Navigator.pushNamed(context, "/rating_review");
+    } on FirebaseAuthException catch (err) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(err.toString()),
+        behavior: SnackBarBehavior.floating,
+      ));
+    }
 
     // Add your login logic here
     // You can check the entered username and password against your database or any other authentication method.
@@ -73,37 +87,36 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
                 margin: EdgeInsets.all(15),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start, // Ubah ini menjadi 'start'
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start, // Ubah ini menjadi 'start'
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      child: customTextField(controller: emailController, title: "Email Address",hintText: "Masukkan Email Address", isPassword: false),
+                      child: customTextField(
+                          controller: emailController,
+                          title: "Email Address",
+                          hintText: "Masukkan Email Address",
+                          isPassword: false),
                     ),
-
                     Container(
-                      child : customTextField(controller: passwordController, title: "Password", hintText: "Masukkan Password", isPassword: true,),
+                      child: customTextField(
+                        controller: passwordController,
+                        title: "Password",
+                        hintText: "Masukkan Password",
+                        isPassword: true,
+                      ),
                     ),
                     SizedBox(height: 20),
-                    //container button
                     Container(
                       alignment: Alignment.center,
                       child: ElevatedButton(
+                        onPressed: _login,
                         child: Text('Login'),
-                        onPressed: (){
-                          if (emailController.text == "" && passwordController.text == ""){
-                            ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text("Masukkan Email dan Password dengan benar"),
-                              behavior : SnackBarBehavior.floating,
-                            )
-                            );
-                          } else {
-                            _login();
-                          }
-                        },
                         style: ElevatedButton.styleFrom(
-                          primary: const Color.fromARGB(255, 255, 255, 255), // Ubah warna latar belakang
-                          onPrimary: const Color.fromARGB(255, 0, 0, 0), // Ubah warna teks
+                          primary: const Color.fromARGB(
+                              255, 255, 255, 255), // Ubah warna latar belakang
+                          onPrimary: const Color.fromARGB(
+                              255, 0, 0, 0), // Ubah warna teks
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -119,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           // Tambahkan teks di bawah layar
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, '/registrasi');
             },
             child: Text(
