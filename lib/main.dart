@@ -1,3 +1,5 @@
+import 'package:flutter_dev/screen/bookmarked.dart';
+import 'package:flutter_dev/screen/bookmarked_2.dart';
 import 'package:flutter_dev/screen/edit_profile.dart';
 import 'package:flutter_dev/screen/homepage.dart';
 import 'package:flutter_dev/screen/logout.dart';
@@ -34,20 +36,24 @@ class MyApp extends StatelessWidget {
         title: 'COOKOS',
         theme: ThemeData(fontFamily: 'Poppins'),
         //initialRoute: LoginPage.routeName,
-        home : homepage(),
-        //routes: {
-        //'/': (context) => const SplashScreenPage(),
-        //'/login': (context) => const LoginPage(),
-        //'/login': (context) => const logout(),
+        //home : bookmarked(),
+        routes: {
+        '/': (context) => const SplashScreenPage(),
+        '/login': (context) => const LoginPage(),
+        //'/logout': (context) => const logout(),
+        //'/homepage': (context) => const homepage(),
         //'/registrasi': (context) => const Registrasi(),
         //'/edit_profile': (context) => const EditProfile(),
         //'/Melihat_profile': (context) => const seeProfile(),
         //'/filter_resep' :(context) => const filterResep(),
-
+        //'/Melihat_resep' :(context) => const melihatResep(),
         //'/rating_review' :(context) => const RatingPage(),
+        '/bookmarked' :(context) => const bookmarked(),
+        '/bookmarked_2' :(context) => const bookmarked_2(),
 
 
-        //}
+
+        }
         // getPages: [
         //   GetPage(name: LoginPage.routeName, page: () => const LoginPage()),
         //   GetPage(name: Registrasi.routeName, page: () => const Registrasi()),
